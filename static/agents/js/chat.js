@@ -14,6 +14,7 @@ const estimatedCostEl = document.getElementById('estimatedCost');
 const connStatusEl = document.getElementById('connStatus');
 const stopBtn = document.getElementById('stopBtn');
 const clearBtn = document.getElementById('clearBtn');
+const emptyState = document.getElementById('emptyState');
 
 let controller = null; // AbortController for the current streaming fetch
 let currentAgentMessageId = null;
@@ -57,6 +58,9 @@ messageInput.addEventListener('keydown', function (e) {
         return;
     }
     console.log("messageInput:::::")
+    if(emptyState){
+      emptyState.remove();
+    }
     return startStream(e)
     // Prevent default newline and send the message
   }
@@ -83,38 +87,96 @@ function formatTime(date = new Date()) {
 }
 
 function appendBubble(author, text, meta = '') {
-  const wrapper = document.createElement('div');
-  wrapper.className = 'max-w-3xl p-4 rounded-xl shadow-xl';
-
   if (author === 'You') {
-    wrapper.classList.add('self-end', 'msg-user', 'text-right');
+    // USER ROW
+    const row = document.createElement('div');
+    row.className = 'chat-row chat-row-user mb-2';
+
+    const bubble = document.createElement('div');
+    bubble.className = 'chat-card-user';
+    bubble.innerHTML = text;
+
+    row.appendChild(bubble);
+    messagesEl.appendChild(row);
+    scrollToBottom();
+
+    return { wrapper: row, body: bubble };
   } else {
-    wrapper.classList.add('self-start', 'msg-agent');
+    // AGENT ROW (LangChain-style card)
+    const row = document.createElement('div');
+    row.className = 'chat-row chat-row-agent mb-4';
+
+    // avatar
+    const avatar = document.createElement('div');
+    avatar.className = 'chat-avatar';
+    avatar.textContent = '≋'; // you can change to emoji or icon
+
+    // right side (card + footer)
+    const right = document.createElement('div');
+    right.className = 'flex-1';
+
+    const card = document.createElement('div');
+    card.className = 'chat-card msg-agent';
+
+    // header line (Agent steps (1) • Xs)
+    const header = document.createElement('div');
+    header.className = 'chat-header-line';
+    const title = document.createElement('span');
+    title.textContent = meta || 'Agent steps (1)';
+    const dot = document.createElement('span');
+    dot.className = 'dot';
+    const time = document.createElement('span');
+    time.textContent = formatTime(); // or '4s'
+    header.appendChild(title);
+    header.appendChild(dot);
+    header.appendChild(time);
+
+    // subtitle
+    const subtitle = document.createElement('div');
+    subtitle.className = 'chat-subtitle';
+    subtitle.textContent = '01 Planning next steps...'; // static label, tweak if you like
+
+    // main body (this is what we update while streaming)
+    const body = document.createElement('div');
+    body.className = 'chat-body';
+    body.innerHTML = text;
+
+    card.appendChild(header);
+    card.appendChild(subtitle);
+    card.appendChild(body);
+
+    // footer
+    const footer = document.createElement('div');
+    footer.className = 'chat-footer';
+    const footerLeft = document.createElement('div');
+    footerLeft.className = 'chat-footer-left';
+
+    ['Copy', 'Regenerate', 'Good', 'Bad', 'Feedback'].forEach((label) => {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'chat-footer-btn';
+      btn.textContent = label;
+      footerLeft.appendChild(btn);
+    });
+
+    const footerRight = document.createElement('div');
+    footerRight.textContent = 'Loading Trace…';
+
+    footer.appendChild(footerLeft);
+    footer.appendChild(footerRight);
+
+    right.appendChild(card);
+    right.appendChild(footer);
+
+    row.appendChild(avatar);
+    row.appendChild(right);
+
+    messagesEl.appendChild(row);
+    scrollToBottom();
+
+    // return both the wrapper and the body element we will stream into
+    return { wrapper: row, body };
   }
-
-  const who = document.createElement('div');
-  who.className = 'text-sm font-semibold';
-  who.textContent = author;
-  const when = document.createElement('div');
-  when.className = 'text-xs text-gray-400';
-  when.textContent = formatTime();
-
-  const body = document.createElement('div');
-  body.className = 'text-[15px] leading-relaxed text-gray-800 font-normal';
-  body.innerHTML = text;
-
-  wrapper.appendChild(body);
-
-  if (meta) {
-    const metaEl = document.createElement('div');
-    metaEl.className = 'mt-2 text-xs text-gray-500';
-    metaEl.textContent = meta;
-    wrapper.appendChild(metaEl);
-  }
-
-  messagesEl.appendChild(wrapper);
-  scrollToBottom();
-  return wrapper;
 }
 
 // SSE-like parser for fetch streaming body (handles "data: {...}\n\n" chunks)
@@ -191,10 +253,10 @@ async function startStream(e) {
   controller = new AbortController();
   stopBtn.classList.remove('hidden');
 
-  // Create a place-holder for agent streaming text
-  const agentWrapper = appendBubble('Agent', ''); // empty initially
-  const agentBody =
-    agentWrapper.querySelector('div.mt-2') || agentWrapper.lastElementChild;
+    // Create a place-holder for agent streaming text
+  const agentBubble = appendBubble('Agent', '');
+  const agentWrapper = agentBubble.wrapper;
+  const agentBody = agentBubble.body;
   let streamedText = '';
 
   const formData = new FormData();

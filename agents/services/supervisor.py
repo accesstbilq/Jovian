@@ -11,7 +11,7 @@ class SupervisorState(TypedDict):
     next_agent: str
     task_description: str
 
-def create_supervisor_agent(model, message_agent, email_agent, checkpointer):
+def create_supervisor_agent(model, message_agent, checkpointer):
     """
     Create a supervisor agent that routes tasks to specialist agents.
     
@@ -105,39 +105,6 @@ def create_supervisor_agent(model, message_agent, email_agent, checkpointer):
                 ]
             }
     
-    # Email sending node
-    def email_sender_node(state: SupervisorState):
-        """Route to email sending agent"""
-        messages = state.get("messages", [])
-        
-        try:
-            # Invoke email agent
-            result = email_agent.invoke({
-                "messages": messages
-            })
-            
-            # Extract the response
-            if hasattr(result, "content"):
-                agent_response = result.content
-            elif isinstance(result, dict):
-                agent_response = result.get("messages", [])
-                if agent_response and hasattr(agent_response[-1], "content"):
-                    agent_response = agent_response[-1].content
-            else:
-                agent_response = str(result)
-            
-            return {
-                "messages": [
-                    AIMessage(content=agent_response)
-                ]
-            }
-        except Exception as e:
-            return {
-                "messages": [
-                    AIMessage(content=f"[Email Agent Error] {str(e)}")
-                ]
-            }
-    
     # Conditional routing function
     def should_route(state: SupervisorState):
         """Determine next step based on routing decision"""
@@ -156,8 +123,7 @@ def create_supervisor_agent(model, message_agent, email_agent, checkpointer):
     # Add nodes
     workflow.add_node("router", route_task)
     workflow.add_node("message_agent", message_generator_node)
-    workflow.add_node("email_agent", email_sender_node)
-    
+
     # Add edges
     workflow.add_edge(START, "router")
     
@@ -167,14 +133,12 @@ def create_supervisor_agent(model, message_agent, email_agent, checkpointer):
         should_route,
         {
             "message_agent": "message_agent",
-            "email_agent": "email_agent",
             "end": END
         }
     )
     
     # Both agents go to end
     workflow.add_edge("message_agent", END)
-    workflow.add_edge("email_agent", END)
     
     # Compile the graph
     supervisor_graph = workflow.compile(checkpointer=checkpointer)

@@ -1,0 +1,116 @@
+[
+  {
+    "url": "https://www.brihaspatitech.com/portfolio/saas-platform-for-corporate-phishing-training-simulation/",
+    "title": "SaaS Platform for Corporate Phishing Training & Simulation",
+    "tech_stack": {
+      "Frontend": [
+        "React"
+      ],
+      "Backend": [
+        "Node"
+      ],
+      "Database": [
+        "MongoDB"
+      ],
+      "Infrastructure": [
+        "AWS"
+      ]
+    },
+    "sections": [
+      {
+        "heading": "Project Overview",
+        "content": "The project aimed to develop a SaaS platform designed to prevent phishing attacks. Built with a multi-tenant architecture, the platform offers a scalable and secure solution for corporate organizations of all sizes, each with a separate environment. The platform empowers businesses to proactively protect themselves by training employees to identify and prevent phishing attacks, fostering a culture of cybersecurity awareness. Client Sam Ardren Industry Cybersecurity"
+      },
+      {
+        "heading": "Tech Stack",
+        "content": "Technology React Js/NodeJs 3rd-Party Integrations Google MFA/Nylas API Database MongoDB"
+      },
+      {
+        "heading": "Action Plan",
+        "content": "The client required a tailored multi-tenant SaaS platform with a Learning Management System (LMS) and Phishing Simulator. Our Agile Development team successfully implemented key features, including user roles, domain verification, integration of third-party APIs for email campaigns, and secure logins. Following are the key elements of our development plan: Intuitive Dashboard with ReactJs & Node Js User Roles and Access Levels Core Functionality Scalable SaaS Architecture Reports & Analytics Integrating APIs Let’s have a closer at each of them:"
+      },
+      {
+        "heading": "Intuitive Dashboard with ReactJs & NodeJs",
+        "content": "We built a fast, real-time, and interactive dashboard with ReactJs and a robust, seamless backend powered by NodeJs."
+      },
+      {
+        "heading": "User Roles and Access Levels",
+        "content": "The platform has 3 distinct user roles: Super Admin, Admin, and Employees."
+      },
+      {
+        "heading": "Super Admin (Platform Owner):",
+        "content": "Full Access: Manage platform settings, templates, and user management (companies, admins, employees). Content Management: Upload and manage training content, including courses, videos, and quizzes. Template Creation: Create and customize phishing templates (text, logos, and background colors). Analytics: Can view detailed analytics (unique opens, clicks, replies)."
+      },
+      {
+        "heading": "Admin (Companies/Clients):",
+        "content": "Platform Access: Admins log in with Multi-Factor Authentication and can select either LMS or Simulation. Employee Management: Manage employees (add via manual entry or CSV uploads). Campaign Management: Schedule, initiate and assign phishing campaigns. Analytics & Reports: Assign courses to employees, track results, and analyze performance."
+      },
+      {
+        "heading": "Employees:",
+        "content": "Course Access: Employees access courses via email links and complete quizzes. Phishing Simulation: They receive phishing simulation emails, and their actions are tracked. Notifications: Notifications are sent for enrollment, reminders, and completion. Results Tracking: Admins track employee performance in courses and simulations."
+      },
+      {
+        "heading": "Template Editor:",
+        "content": "Lets Super Admins customize phishing simulation templates. They can customize the logo, text, and background colors on training templates. They can save modified templates for future campaigns, ensuring flexibility and reusability."
+      },
+      {
+        "heading": "Core Functionality",
+        "content": "The platform has 2 functioning Modules: Learning Management Systems and Phishing Stimulator."
+      },
+      {
+        "heading": "Learning Management System (LMS)",
+        "content": "For educational purposes where employees can learn about phishing attacks. Super Admin can upload and manage training courses. Admins can view training courses and share with employees. Employees can access the courses and attempt quizzes."
+      },
+      {
+        "heading": "Phishing Simulator for Training",
+        "content": "Admins can initiate one-time or recurring phishing campaigns for employees. Admin can send simulated phishing emails, tracks responses, and provides analytics on employee interactions (e.g., opens, clicks, replies). Super Admin creates phishing templates, which Admins can customize for their simulations."
+      },
+      {
+        "heading": "Scalable SaaS Platform",
+        "content": "We designed a scalable, secure multi-tenant platform that ensures separate data management for each client/company."
+      },
+      {
+        "heading": "Scalability & Performance Optimization",
+        "content": "Scalability: The platform utilizes AWS auto-scaling features to dynamically adjust its resources based on real-time usage demands. Growth Accommodation: With the auto-scaling mechanism, the platform seamlessly accommodates an increasing number of clients without compromising performance."
+      },
+      {
+        "heading": "GIT Security",
+        "content": "We use Git to track changes in the source code, enabling multiple users to collaborate on non-linear development. Track code changes with Git logs and use encrypted connections to keep code secure. GIT ensures proper access and protects sensitive data."
+      },
+      {
+        "heading": "Integrating APIs",
+        "content": "We integrated Google MFA for secure logins and Nylas Email API for efficient email campaign management."
+      },
+      {
+        "heading": "Google MFA (Multi-Factor Authentication)",
+        "content": "Integrated Google MFA to add an extra layer of security for user logins, requiring both a password and a time-sensitive code. Prevents unauthorized access by ensuring only authenticated users can log in. Users receive the code via mobile or authenticator app for elevated security."
+      },
+      {
+        "heading": "Email API (Nylas)",
+        "content": "Nylas Email API enables sending and managing email campaigns directly from the platform. Tracks email events like opens, clicks, and replies for insights into user engagement. Automates sending training and phishing simulation emails, ensuring timely communication and reliable delivery."
+      },
+      {
+        "heading": "Reports & Analytics",
+        "content": "We implemented robust domain verification, reporting tools, and analytics to enhance security and track performance."
+      },
+      {
+        "heading": "Domain Verification",
+        "content": "Used TXT records to confirm email domain ownership. Ensures only authorized logins. Prevented misuse of the platform by verifying domain legitimacy."
+      },
+      {
+        "heading": "Reporting Tools",
+        "content": "Developed tools to tracks employee performance in LMS (course completion, quizzes). Maintain campaign effectiveness through unique opens, clicks, and replies. Analytics to identify gaps and behavior patterns."
+      },
+      {
+        "heading": "Result: A SaaS Solution for Phishing Awareness and Prevention",
+        "content": "The project has delivered measurable results in educating employees on phishing awareness. Over the past year, the platform has provided a scalable, secure solution that streamlines training, tracks performance, and supports multi-tenancy, enabling the client to expand its customer base and drive revenue growth. By cultivating a culture of phishing awareness, businesses are better equipped to defend against cyber threats and build a more secure future."
+      },
+      {
+        "heading": "Ready to Discuss?",
+        "content": "Share your project details and get a tailored proposal for your business. Get Started"
+      }
+    ],
+    "rag_context": "# Project: SaaS Platform for Corporate Phishing Training & Simulation\n\n## Tech Stack Detected\n{\n  \"Frontend\": [\n    \"React\"\n  ],\n  \"Backend\": [\n    \"Node\"\n  ],\n  \"Database\": [\n    \"MongoDB\"\n  ],\n  \"Infrastructure\": [\n    \"AWS\"\n  ]\n}\n\n## Project Overview\nThe project aimed to develop a SaaS platform designed to prevent phishing attacks. Built with a multi-tenant architecture, the platform offers a scalable and secure solution for corporate organizations of all sizes, each with a separate environment. The platform empowers businesses to proactively protect themselves by training employees to identify and prevent phishing attacks, fostering a culture of cybersecurity awareness. Client Sam Ardren Industry Cybersecurity\n\n## Tech Stack\nTechnology React Js/NodeJs 3rd-Party Integrations Google MFA/Nylas API Database MongoDB\n\n## Action Plan\nThe client required a tailored multi-tenant SaaS platform with a Learning Management System (LMS) and Phishing Simulator. Our Agile Development team successfully implemented key features, including user roles, domain verification, integration of third-party APIs for email campaigns, and secure logins. Following are the key elements of our development plan: Intuitive Dashboard with ReactJs & Node Js User Roles and Access Levels Core Functionality Scalable SaaS Architecture Reports & Analytics Integrating APIs Let’s have a closer at each of them:\n\n## Intuitive Dashboard with ReactJs & NodeJs\nWe built a fast, real-time, and interactive dashboard with ReactJs and a robust, seamless backend powered by NodeJs.\n\n## User Roles and Access Levels\nThe platform has 3 distinct user roles: Super Admin, Admin, and Employees.\n\n## Super Admin (Platform Owner):\nFull Access: Manage platform settings, templates, and user management (companies, admins, employees). Content Management: Upload and manage training content, including courses, videos, and quizzes. Template Creation: Create and customize phishing templates (text, logos, and background colors). Analytics: Can view detailed analytics (unique opens, clicks, replies).\n\n## Admin (Companies/Clients):\nPlatform Access: Admins log in with Multi-Factor Authentication and can select either LMS or Simulation. Employee Management: Manage employees (add via manual entry or CSV uploads). Campaign Management: Schedule, initiate and assign phishing campaigns. Analytics & Reports: Assign courses to employees, track results, and analyze performance.\n\n## Employees:\nCourse Access: Employees access courses via email links and complete quizzes. Phishing Simulation: They receive phishing simulation emails, and their actions are tracked. Notifications: Notifications are sent for enrollment, reminders, and completion. Results Tracking: Admins track employee performance in courses and simulations.\n\n## Template Editor:\nLets Super Admins customize phishing simulation templates. They can customize the logo, text, and background colors on training templates. They can save modified templates for future campaigns, ensuring flexibility and reusability.\n\n## Core Functionality\nThe platform has 2 functioning Modules: Learning Management Systems and Phishing Stimulator.\n\n## Learning Management System (LMS)\nFor educational purposes where employees can learn about phishing attacks. Super Admin can upload and manage training courses. Admins can view training courses and share with employees. Employees can access the courses and attempt quizzes.\n\n## Phishing Simulator for Training\nAdmins can initiate one-time or recurring phishing campaigns for employees. Admin can send simulated phishing emails, tracks responses, and provides analytics on employee interactions (e.g., opens, clicks, replies). Super Admin creates phishing templates, which Admins can customize for their simulations.\n\n## Scalable SaaS Platform\nWe designed a scalable, secure multi-tenant platform that ensures separate data management for each client/company.\n\n## Scalability & Performance Optimization\nScalability: The platform utilizes AWS auto-scaling features to dynamically adjust its resources based on real-time usage demands. Growth Accommodation: With the auto-scaling mechanism, the platform seamlessly accommodates an increasing number of clients without compromising performance.\n\n## GIT Security\nWe use Git to track changes in the source code, enabling multiple users to collaborate on non-linear development. Track code changes with Git logs and use encrypted connections to keep code secure. GIT ensures proper access and protects sensitive data.\n\n## Integrating APIs\nWe integrated Google MFA for secure logins and Nylas Email API for efficient email campaign management.\n\n## Google MFA (Multi-Factor Authentication)\nIntegrated Google MFA to add an extra layer of security for user logins, requiring both a password and a time-sensitive code. Prevents unauthorized access by ensuring only authenticated users can log in. Users receive the code via mobile or authenticator app for elevated security.\n\n## Email API (Nylas)\nNylas Email API enables sending and managing email campaigns directly from the platform. Tracks email events like opens, clicks, and replies for insights into user engagement. Automates sending training and phishing simulation emails, ensuring timely communication and reliable delivery.\n\n## Reports & Analytics\nWe implemented robust domain verification, reporting tools, and analytics to enhance security and track performance.\n\n## Domain Verification\nUsed TXT records to confirm email domain ownership. Ensures only authorized logins. Prevented misuse of the platform by verifying domain legitimacy.\n\n## Reporting Tools\nDeveloped tools to tracks employee performance in LMS (course completion, quizzes). Maintain campaign effectiveness through unique opens, clicks, and replies. Analytics to identify gaps and behavior patterns.\n\n## Result: A SaaS Solution for Phishing Awareness and Prevention\nThe project has delivered measurable results in educating employees on phishing awareness. Over the past year, the platform has provided a scalable, secure solution that streamlines training, tracks performance, and supports multi-tenancy, enabling the client to expand its customer base and drive revenue growth. By cultivating a culture of phishing awareness, businesses are better equipped to defend against cyber threats and build a more secure future.\n\n## Ready to Discuss?\nShare your project details and get a tailored proposal for your business. Get Started\n\n",
+    "timestamp": "2025-12-01T18:29:07.302557"
+  }
+]

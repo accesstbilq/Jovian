@@ -65,7 +65,6 @@ def chat_asistance(request: HttpRequest):
     # ---- Parse request ----
     session_id = request.POST.get("session_id")
     user_message = request.POST.get("user_message")
-    task_type = request.POST.get("task_type", "auto")
 
     if not session_id:
         return JsonResponse({"error": "session_id is required"}, status=400)
@@ -81,14 +80,13 @@ def chat_asistance(request: HttpRequest):
         checkpointer = PostgresSaver(conn)
         # Create specialist agents
         message_agent = create_message_agent(model, checkpointer)
-        email_agent = create_email_agent(model, checkpointer)
+        # email_agent = create_email_agent(model, checkpointer)
 
         # Create supervisor
-        supervisor_agent = create_supervisor_agent(model, message_agent, email_agent, checkpointer)
+        supervisor_agent = create_supervisor_agent(model, message_agent, checkpointer)
 
         agent_input = {
-            "messages": [HumanMessage(content=user_message)],
-            "task_type": task_type
+            "messages": [HumanMessage(content=user_message)]
         }
         
         try:
