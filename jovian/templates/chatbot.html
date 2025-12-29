@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="light">
+<html lang="en" class="light dark">
     <head>
         {% load static %}
         <meta charset="UTF-8" />
@@ -52,32 +52,57 @@
     }
   </script>
         <style>
+
+
+    @layer utilities {
+        .scrollbar::-webkit-scrollbar {
+            width: 10px;
+            height: 10px;
+        }
+
+        .scrollbar::-webkit-scrollbar-track {
+            border-radius: 100vh;
+            background: rgb(17 24 39 / var(--tw-bg-opacity, 1));
+        }
+
+        .scrollbar::-webkit-scrollbar-thumb {
+            background: rgb(246 227 57 / var(--tw-bg-opacity, 1));
+            border-radius: 100vh;
+            border: 1px solid #f6f7ed;
+        }
+
+        .scrollbar::-webkit-scrollbar-thumb:hover {
+            background: rgb(246 227 57 / var(--tw-bg-opacity, 1));
+        }
+    }
+
+        
     .typing-dot {
-  width: 10px;
-  height: 10px;
-  background-color: #9CA3AF; /* muted gray */
-  border-radius: 50%;
-  animation: pulseDot 1.2s ease-in-out infinite;
-}
+        width: 10px;
+        height: 10px;
+        background-color: #9CA3AF; /* muted gray */
+        border-radius: 50%;
+        animation: pulseDot 1.2s ease-in-out infinite;
+    }
 
-.dark .typing-dot {
-  background-color: #D1D5DB;
-}
+    .dark .typing-dot {
+        background-color: #D1D5DB;
+    }
 
-@keyframes pulseDot {
-  0% {
-    transform: scale(0.6);
-    opacity: 0.4;
-  }
-  50% {
-    transform: scale(1);
-    opacity: 1;
-  }
-  100% {
-    transform: scale(0.6);
-    opacity: 0.4;
-  }
-}
+    @keyframes pulseDot {
+    0% {
+        transform: scale(0.6);
+        opacity: 0.4;
+    }
+    50% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(0.6);
+        opacity: 0.4;
+    }
+    }
 
   </style>
     </head>
@@ -93,7 +118,8 @@
                 <div class="p-5 border-b border-border dark:border-darkBorder">
                     <div class="font-semibold text-lg">Your Conversations</div>
                     <button
-                        class="mt-4 w-full bg-[#F6E339] hover:bg-[#F6E339]Hover text-black py-2 rounded-lg text-sm">
+                        class="mt-4 w-full bg-[#F6E339] hover:bg-[#F6E339]Hover text-black py-2 rounded-lg text-sm"
+                        id="newChat">
                         + New Chat
                     </button>
                 </div>
@@ -102,7 +128,7 @@
                     <div>
                         <div
                             class="text-xs font-semibold text-muted dark:text-darkTextSecondary mb-2">TODAY</div>
-                        <div class="space-y-1">
+                        <!-- <div class="space-y-1">
                             <div
                                 class="p-3 rounded-lg bg-[#F6E339]/10 text-primary cursor-pointer">
                                 Website Development Discussion
@@ -111,17 +137,18 @@
                                 class="p-3 rounded-lg hover:bg-background dark:hover:bg-darkBg cursor-pointer">
                                 Mobile App Inquiry
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </aside>
 
             <!-- MAIN -->
-            <div class="flex-1 flex flex-col overflow-auto max-h-dvh">
+            <div
+                class="flex-1 flex flex-col overflow-auto max-h-dvh overflow-y-auto scrollbar">
 
                 <!-- HEADER -->
                 <header
-                    class="bg-surface dark:bg-darkSurface border-b border-border dark:border-darkBorder px-6 py-4 flex justify-between items-center">
+                    class="bg-surface dark:bg-darkSurface border-b border-border dark:border-darkBorder px-6 py-4 flex justify-between items-center sticky top-0">
                     <div class="flex items-center gap-3">
                         <div
                             class="w-9 h-9 bg-[#F6E339] text-black rounded-lg flex items-center justify-center font-bold">BI</div>
@@ -152,7 +179,7 @@
 
                 <!-- CHAT -->
                 <main
-                    class="flex-1 overflow-y-auto flex items-center justify-center">
+                    class="flex-1 flex items-center justify-center">
                     <div id="messages"
                         class="w-full max-w-4xl px-6 py-10 flex flex-col  gap-8">
 
@@ -181,7 +208,6 @@
                                 focus:outline-none overflow-y-auto"></textarea>
 
                                 <button
-                                    id="firstSendBtn"
                                     type="submit"
                                     class="bg-[#F6E339] hover:bg-[#F6E339] text-black
                                 px-5 py-2 rounded-xl font-medium">
@@ -195,11 +221,11 @@
 
                 <!-- INPUT -->
                 <footer id="fotterChat"
-                    class="hidden flex justify-center bg-surface dark:bg-darkSurface border-t border-border dark:border-darkBorder px-6 py-4">
+                    class="hidden flex justify-center dark:border-darkBorder px-6 py-4 sticky bottom-0">
 
                     <form
                         id="chatForm"
-                        class="w-full max-w-3xl flex items-center gap-3
+                        class="w-full max-w-4xl flex items-center gap-3
                                 border border-[#6B5FA7] rounded-2xl
                                 px-4 py-3 bg-black">
 
@@ -212,7 +238,6 @@
                                 focus:outline-none overflow-y-auto"></textarea>
 
                         <button
-                            id="sendBtn"
                             type="submit"
                             class="bg-[#F6E339] hover:bg-[#F6E339] text-black
                                 px-5 py-2 rounded-xl font-medium">

@@ -84,31 +84,31 @@ class Command(BaseCommand):
         
         for category_name, category_info in self.MASTER_TAXONOMY.items():
             prompt = f"""
-You are analyzing Brihaspati Infotech's project portfolio for {category_name}.
+            You are analyzing Brihaspati Infotech's project portfolio for {category_name}.
 
-**CATEGORY PURPOSE:** {category_info['purpose']}
-**KEYWORD TRIGGERS:** {', '.join(category_info['keywords'])}
-**EVIDENCE TYPE:** {category_info['evidence']}
+            **CATEGORY PURPOSE:** {category_info['purpose']}
+            **KEYWORD TRIGGERS:** {', '.join(category_info['keywords'])}
+            **EVIDENCE TYPE:** {category_info['evidence']}
 
-**TASK:** Extract ONE paragraph from `project_json` that BEST demonstrates this capability.
-- Use ONLY facts from the JSON
-- Reference specific project names & technologies  
-- Keep concise (100-200 words)
-- Make it query-answer ready
+            **TASK:** Extract ONE paragraph from `project_json` that BEST demonstrates this capability.
+            - Use ONLY facts from the JSON
+            - Reference specific project names & technologies  
+            - Keep concise (100-200 words)
+            - Make it query-answer ready
 
-**PROJECT JSON:**
-{json.dumps(project_json, indent=2)}
+            **PROJECT JSON:**
+            {json.dumps(project_json, indent=2)}
 
-**OUTPUT JSON ONLY:**
-{{
-    "content": "Your extracted paragraph here",
-    "metadata": {{
-        "category": "{category_name}",
-        "sub_type": "Extract from JSON",
-        "keywords": ["list", "3-5", "exact", "phrases"],
-        "project_ref": "Specific project name"
-    }}
-}}
+            **OUTPUT JSON ONLY:**
+            {{
+                "content": "Your extracted paragraph here",
+                "metadata": {{
+                    "category": "{category_name}",
+                    "sub_type": "Extract from JSON",
+                    "keywords": ["list", "3-5", "exact", "phrases"],
+                    "project_ref": "Specific project name"
+                }}
+            }}
             """
             
             try:
@@ -230,7 +230,7 @@ You are analyzing Brihaspati Infotech's project portfolio for {category_name}.
             self.stdout.write(f"{cat_match} {category:<25} | '{query[:40]}...' -> {len(docs)} docs")
 
     def upsert_documents_to_vectorstore(self, documents: List[Document]) -> Chroma:
-        """✅ Atomic upsert - 100% CHROMA SAFE"""
+        """✅ Atomic upsert - 100% CHROMA SAFE - FIXED: No nested lists"""
         if not documents:
             raise ValueError("No documents to upsert")
         
@@ -251,16 +251,17 @@ You are analyzing Brihaspati Infotech's project portfolio for {category_name}.
                 persist_directory=str(CHROMA_DB_PATH),
             )
             temp_vectorstore.delete_collection()
-            
-            # 2. Create NEW collection with safe documents
+
+            # ✅ FIXED: Direct creation with delete_collection=True
             vectorstore = Chroma.from_documents(
-                documents=documents,  # ✅ Already CHROMA SAFE
+                documents=documents,  # ✅ Flat list - CHROMA SAFE
                 embedding=embeddings,
                 collection_name=COLLECTION_NAME,
                 persist_directory=str(CHROMA_DB_PATH),
+                # ✅ This deletes existing collection automatically
             )
             
-            # 3. Test retrieval
+            # ✅ Test retrieval immediately
             self.test_retrieval_sample(vectorstore)
             
             self.stdout.write(
@@ -277,7 +278,7 @@ You are analyzing Brihaspati Infotech's project portfolio for {category_name}.
             raise
 
     def handle(self, *args, **options) -> None:
-        """🚀 PRODUCTION PIPELINE: JSON → Taxonomy → Embeddings → Test"""
+        """🚀 PRODUCTION PIPELINE: JSON → Taxonomy → Embeddings → Test - FIXED"""
         self.stdout.write(self.style.SUCCESS("🚀 Brihaspati Portfolio → Master Taxonomy Embeddings"))
         self.stdout.write(self.style.SUCCESS("=" * 60))
         
@@ -290,14 +291,24 @@ You are analyzing Brihaspati Infotech's project portfolio for {category_name}.
         except Exception as e:
             self.stdout.write(self.style.ERROR(f"❌ JSON load failed: {e}"))
             return
-
-        # 2. GENERATE TAXONOMY
-        taxonomy_chunks = self.build_taxonomy_chunks_from_project_json(portfolio_json)
         
-        # 3. VALIDATE & CONVERT
-        documents = self.convert_to_documents(taxonomy_chunks)
+        # ✅ FIXED: Flatten all documents into single list
+        all_documents = []
         
-        # 4. EMBED & STORE
-        self.upsert_documents_to_vectorstore(documents)
+        for i, portfolio in enumerate(portfolio_json):
+            self.stdout.write(self.style.NOTICE(f"\n📂 Processing project {i+1}/{len(portfolio_json)}"))
+            
+            # 2. GENERATE TAXONOMY (5 chunks per project)
+            taxonomy_chunks = self.build_taxonomy_chunks_from_project_json(portfolio)
+            
+            # 3. VALIDATE & CONVERT TO DOCUMENTS
+            project_docs = self.convert_to_documents(taxonomy_chunks)
+            
+            # ✅ FIXED: Extend flat list (not append nested list)
+            all_documents.extend(project_docs)
+            self.stdout.write(self.style.SUCCESS(f"   Added {len(project_docs)} taxonomy docs"))
+        
+        # 4. EMBED & STORE - Single flat list
+        self.upsert_documents_to_vectorstore(all_documents)
         
         self.stdout.write(self.style.SUCCESS("\n🎉 Master Taxonomy Embeddings COMPLETE!"))

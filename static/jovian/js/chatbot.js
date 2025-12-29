@@ -6,14 +6,17 @@ const sessionId =
 
 const STREAM_URL = '/api/chat';
 
+const firstSendBtn = document.getElementById('firstSendBtn');
+const sendBtn = document.getElementById('sendBtn');
 const messagesEl = document.getElementById('messages');
 const chatForm = document.getElementById('chatForm');
-const firstChatForm = document.getElementById('chatForm');
+const firstChatForm = document.getElementById('firstChatForm');
 const messageInput = document.getElementById('messageInput');
 const firstMessageInput = document.getElementById('firstMessageInput');
 const emptyState = document.getElementById('emptyState');
 const sendFirstMessage = document.getElementById('sendFirstMessage');
 const fotterChat = document.getElementById('fotterChat');
+const newChat = document.getElementById('newChat');
 
 let controller = null;
 
@@ -164,8 +167,15 @@ async function startStream(e) {
 
 /* ---------- EVENTS ---------- */
 
-chatForm.addEventListener('submit', startStream);
-firstChatForm.addEventListener('submit', startStream);
+chatForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  startStream(e)
+});
+
+firstChatForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  startStream(e);
+});
 
 firstMessageInput.addEventListener('keydown', (e) => {
   if (e.key === 'Enter' && !e.shiftKey) {
@@ -180,6 +190,11 @@ messageInput.addEventListener('keydown', (e) => {
     startStream(e);
   }
 });
+
+newChat.addEventListener('click', () => {
+  window.load()
+})
+
 
 const MAX_TEXTAREA_HEIGHT = 160; // px (≈ 4–5 lines like ChatGPT)
 

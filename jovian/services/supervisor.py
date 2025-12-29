@@ -6,6 +6,7 @@ from langchain_chroma import Chroma
 from langchain_openai import ChatOpenAI, OpenAIEmbeddings
 from langchain_classic.retrievers import MultiQueryRetriever
 from langchain_openai import OpenAIEmbeddings
+from langchain.agents import create_agent
 # from langchain_core.utils.math import cosine_similarity
 # from langchain_community.vectorstores import Chroma  # or your vectorstore
 # from langchain.tools.retriever import create_retriever_tool
@@ -14,6 +15,7 @@ from typing import Optional, Annotated, Literal, Any, Dict
 from pydantic import BaseModel, Field
 from typing_extensions import TypedDict
 from pathlib import Path
+from ..helpers.system_prompt import SYSTEM_PROMPT
 import operator
 from dataclasses import dataclass
 
@@ -86,75 +88,6 @@ def create_supervisor_agent(llm, message_agent, checkpointer):
         response_generated: bool                # ✅ CRITICAL: Prevent duplicates
         final_response: str
         goto: str
-
-
-
-    ROUTE_MAP = {
-        "technical_capability": [
-            "What tech stack do you use?",
-            "Do you know React?",
-            "How do you handle scaling?",
-            "Is your code secure?",
-            "Do you use AWS or Azure?"
-        ],
-        "engagement_hiring": [
-            "Can I hire a developer?",
-            "What is your hourly rate?",
-            "Do you have a dedicated team?",
-            "How much does it cost?",
-            "Are your developers available now?"
-        ],
-        "process_communication": [
-            "How do we communicate?",
-            "Do you sign an NDA?",
-            "What is your project management process?",
-            "Can I get a quote?",
-            "Do you use Slack?"
-        ],
-        "business_trust": [
-            "Have you worked with startups?",
-            "Show me your case studies.",
-            "Why should I trust you?",
-            "What are your reviews like?",
-            "Have you built something like this before?"
-        ],
-        "general_chat": [
-            "Hi",
-            "Hello",
-            "Who are you?",
-            "Good morning"
-        ]
-    }
-
-    # Pre-compute embeddings for your route map (Do this ONCE when app starts)
-    route_vectors = {
-        key: embeddings.embed_documents(sentences) 
-        for key, sentences in ROUTE_MAP.items()
-    }
-
-
-    # def fast_semantic_router(state):
-    #     query = state["question"]
-    #     query_vector = embeddings.embed_query(query)
-        
-    #     # Compare input vector to all route vectors
-    #     scores = {}
-    #     for category, vectors in route_vectors.items():
-    #         # Get max similarity for this category
-    #         similarity = cosine_similarity([query_vector], vectors)[0]
-    #         scores[category] = np.max(similarity)
-        
-    #     # Get the category with the highest score
-    #     best_category = max(scores, key=scores.get)
-        
-    #     # Threshold check: If similarity is too low, default to general search or chat
-    #     if scores[best_category] < 0.7: 
-    #         return "general_chat" # Or a "fallback_search"
-            
-    #     return best_category
-
-
-
 
     def read_message(state: SupervisorState) -> SupervisorState:
         """✅ FIXED: Extract ONLY latest user message"""
@@ -294,18 +227,23 @@ def create_supervisor_agent(llm, message_agent, checkpointer):
                 rag_context = "\n\n".join(context_parts)
                 print(f"[MESSAGE GENERATOR] RAG Context (length: {len(rag_context)}):")
                 print(rag_context[:200] + "...\n")
+                result = message_agent.invoke(
+                    {"messages": messages},
+                    context=AgentContext(
+                        rag_context=rag_context,
+                        has_rag_data=has_rag_data
+                    )
+                )
             else:
                 print("[MESSAGE GENERATOR] ⚠️ NO RAG DATA - Agent will not hallucinate")
                 rag_context = ""
-
-            # Invoke agent with context - THIS IS WHERE GROUNDING HAPPENS
-            result = message_agent.invoke(
-                {"messages": messages},
-                context=AgentContext(
-                    rag_context=rag_context,
-                    has_rag_data=has_rag_data
+                model = ChatOpenAI(model="gpt-4.1", temperature=0.1)
+                agent = create_agent(
+                    model=model,
+                    system_prompt=SYSTEM_PROMPT,
                 )
-            )
+                # Invoke agent with context - THIS IS WHERE GROUNDING HAPPENS
+                result = agent.invoke({"messages": messages})
             
             # Extract the response
             if hasattr(result, "messages") and result.messages:
@@ -356,8 +294,8 @@ def create_supervisor_agent(llm, message_agent, checkpointer):
 
     workflow.add_node("read_message", read_message)
     workflow.add_node("intent_classifier", intent_classifier)
-    workflow.add_node("rag_executor", rag_executor)
     workflow.add_node("general_message", general_message)
+    workflow.add_node("rag_executor", rag_executor)
     workflow.add_node("router", router_node)
 
     # ========================================

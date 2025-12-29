@@ -1,187 +1,258 @@
-{
-  "project": {
-    "title": "SaaS Solution Elevates Gatsby’s Influencer Game",
-    "client": "Gatsby",
-    "platform_url": "https://gatsby.ai/",
-    "shopify_app_url": "https://apps.shopify.com/gatsby",
-    "industry": "Influencer Marketing / eCommerce / Social-to-CRM Automation",
-    "categories": ["Influencer Marketing", "Social/Community", "Software / SaaS", "Ecommerce", "Shopify App"],
-    "overview": "Built a full-featured SaaS platform (Gatsby) that helps Shopify merchants convert social media engagement (Instagram, TikTok) into customer data and influencer-driven growth — enabling merchants to discover, manage and automate micro-influencer and ambassador programs, with deep integrations across marketing, loyalty, CRM and automation tools.",
-    "core_value_proposition": {
-      "social_to_subscriber_conversion": "Convert Instagram/TikTok followers into email & SMS subscribers to grow marketing lists directly from social engagement. :contentReference[oaicite:1]{index=1}",
-      "influencer_discovery_from_customers": "Automatically identify customers or site visitors who qualify as micro-influencers (based on follower-count, social reach, bio keywords, engagement) — enabling micro-influencer campaigns without manual outreach. :contentReference[oaicite:2]{index=2}",
-      "UGC & Social Interaction Tracking": "Track Instagram/TikTok content associated with your brand; gather engagement metrics & media assets in a unified dashboard. :contentReference[oaicite:3]{index=3}",
-      "Marketing / CRM / Loyalty / Automation Integration": "Seamlessly integrate with marketing & loyalty tools like email/SMS (e.g. Klaviyo, Attentive), loyalty & rewards (e.g. LoyaltyLion, Yotpo), CRM/marketing automation (e.g. HubSpot, Omnisend) — enabling automated flows for influencer onboarding, rewards, follow-ups and sales tracking. :contentReference[oaicite:4]{index=4}",
-      "Ambassador Program Automation & Performance Analytics": "Allow merchants to run automated ambassador / UGC / referral programs: detect influencers, send them dynamic coupon/referral/loyalty codes, track their social posts & UGC, measure conversions & revenue, and manage communication — saving manual work and scaling authenticity. :contentReference[oaicite:5]{index=5}"
-    },
-    "tech_stack": {
-      "frontend_backend": "React JS / Node JS",
-      "database": "PostgreSQL",
-      "integrations_supported": [
-        "Klaviyo",
-        "Gorgias",
-        "Attentive",
-        "LoyaltyLion",
-        "Yotpo",
-        "Yotpo SmsBump",
-        "Stamped",
-        "Talkable",
-        "HubSpot",
-        "Omnisend",
-        "Sailthru",
-        "Zapier / Webhooks",
-        "WhiteLabelLoyalty",
-        "Sendlane"
-      ]
-    },
-    "integrations": [
-      {
-        "name": "Klaviyo",
-        "url": "https://www.klaviyo.com/login",
-        "status": "integrated",
-        "role": "Email/SMS marketing & list growth from social"
+[
+  {
+    "project": {
+      "title": "SaaS Solution Elevates Gatsby’s Influencer Game",
+      "client": "Gatsby",
+      "platform_url": "https://gatsby.ai/",
+      "shopify_app_url": "https://apps.shopify.com/gatsby",
+      "industry": "Influencer Marketing / eCommerce / Social-to-CRM Automation",
+      "categories": [
+        "Influencer Marketing",
+        "Social/Community",
+        "Software / SaaS",
+        "Ecommerce",
+        "Shopify App"
+      ],
+      "overview": "Built a full-featured SaaS platform (Gatsby) that helps Shopify merchants convert social media engagement (Instagram, TikTok) into customer data and influencer-driven growth — enabling merchants to discover, manage and automate micro-influencer and ambassador programs, with deep integrations across marketing, loyalty, CRM and automation tools.",
+      "core_value_proposition": {
+        "social_to_subscriber_conversion": "Convert Instagram/TikTok followers into email & SMS subscribers to grow marketing lists directly from social engagement. :contentReference[oaicite:1]{index=1}",
+        "influencer_discovery_from_customers": "Automatically identify customers or site visitors who qualify as micro-influencers (based on follower-count, social reach, bio keywords, engagement) — enabling micro-influencer campaigns without manual outreach. :contentReference[oaicite:2]{index=2}",
+        "UGC & Social Interaction Tracking": "Track Instagram/TikTok content associated with your brand; gather engagement metrics & media assets in a unified dashboard. :contentReference[oaicite:3]{index=3}",
+        "Marketing / CRM / Loyalty / Automation Integration": "Seamlessly integrate with marketing & loyalty tools like email/SMS (e.g. Klaviyo, Attentive), loyalty & rewards (e.g. LoyaltyLion, Yotpo), CRM/marketing automation (e.g. HubSpot, Omnisend) — enabling automated flows for influencer onboarding, rewards, follow-ups and sales tracking. :contentReference[oaicite:4]{index=4}",
+        "Ambassador Program Automation & Performance Analytics": "Allow merchants to run automated ambassador / UGC / referral programs: detect influencers, send them dynamic coupon/referral/loyalty codes, track their social posts & UGC, measure conversions & revenue, and manage communication — saving manual work and scaling authenticity. :contentReference[oaicite:5]{index=5}"
       },
-      {
-        "name": "Gorgias",
-        "url": "https://gatsbydev.gorgias.com/login",
-        "status": "integrated",
-        "role": "Customer support / helpdesk — connects social & UGC data with support workflow"
+      "tech_stack": {
+        "frontend_backend": "React JS / Node JS",
+        "database": "MongoDB",
+        "integrations_supported": [
+          "Klaviyo",
+          "Gorgias",
+          "Attentive",
+          "LoyaltyLion",
+          "Yotpo",
+          "Yotpo SmsBump",
+          "Stamped",
+          "Talkable",
+          "HubSpot",
+          "Omnisend",
+          "Sailthru",
+          "Zapier / Webhooks",
+          "WhiteLabelLoyalty",
+          "Sendlane"
+        ]
       },
-      {
-        "name": "Attentive",
-        "url": "https://ui.attentivemobile.com/signin",
-        "status": "integrated",
-        "role": "SMS marketing / automation"
-      },
-      {
-        "name": "LoyaltyLion",
-        "url": "https://app.loyaltylion.com/login",
-        "status": "integrated",
-        "role": "Loyalty & rewards / ambassador/referral program support"
-      },
-      {
-        "name": "Yotpo",
-        "url": "https://login.yotpo.com/#/login?product=sms",
-        "status": "integrated",
-        "role": "Reviews / UGC / loyalty / referral"
-      },
-      {
-        "name": "YotpoSmsBump",
-        "url": "https://login.yotpo.com/#/login?product=settings",
-        "status": "integrated",
-        "role": "SMS & marketing automation (via Yotpo stack)"
-      },
-      {
-        "name": "Stamped",
-        "url": "https://stamped.io/account/signin",
-        "status": "integrated",
-        "role": "Reviews / UGC / loyalty / social proof & reputation"
-      },
-      {
-        "name": "Talkable",
-        "url": "https://www.talkable.com/login",
-        "status": "integrated",
-        "role": "Referral / sharing / ambassador campaigns"
-      },
-      {
-        "name": "HubSpot",
-        "url": "https://app.hubspot.com/login",
-        "status": "integrated",
-        "role": "CRM, omnichannel marketing automation"
-      },
-      {
-        "name": "Omnisend",
-        "url": "https://app.omnisend.com/login",
-        "status": "integrated",
-        "role": "Email/SMS marketing automation"
-      },
-      {
-        "name": "Sailthru",
-        "url": "https://login.sailthru.com/u/login/identifier?state=...",
-        "status": "integrated",
-        "role": "Email marketing / customer segmentation / personalization"
-      },
-      {
-        "name": "Zapier",
-        "url": null,
-        "status": "pending_client_access",
-        "role": "Workflow automation / custom integrations / webhook orchestration"
-      },
-      {
-        "name": "Webhooks",
-        "url": "integration page",
-        "status": "configured",
-        "role": "Custom triggers, event-based automation for non-standard workflows"
-      },
-      {
-        "name": "WhiteLabelLoyalty",
-        "url": "https://auth.wlloyalty.net/u/login?state=...",
-        "status": "integrated",
-        "role": "White-label loyalty/rewards program integration"
-      },
-      {
-        "name": "Sendlane",
-        "url": "https://auth.sendlane.com/login",
-        "status": "integrated",
-        "role": "Email/SMS marketing automation / lifecycle messaging"
-      }
-    ],
-    "key_features": {
-      "social_signup_capture": "Allow Instagram/TikTok followers to subscribe via DMs or popups — converting social audience into owned email & SMS lists. :contentReference[oaicite:6]{index=6}",
-      "UGC_media_tracking": "Track UGC: posts, stories, reels, mentions, tags, DMs, comments; aggregate media assets + engagement metrics; allow downloadable content. :contentReference[oaicite:7]{index=7}",
-      "Influencer_scoring_and_segmentation": "Based on follower count, engagement, bio keywords — produce a ‘G Score’ to identify ideal micro-influencers / ambassadors. :contentReference[oaicite:8]{index=8}",
-      "Automated Ambassador & Influencer Campaigns": "Trigger flows based on social events (e.g. story mentions, tags, DMs) — auto-reply, send discount / referral / loyalty codes, enroll in ambassador programs. :contentReference[oaicite:9]{index=9}",
-      "Integration with Email/SMS, Loyalty, CRM, Reviews & Automation Tools": "Connect social/customer data to marketing stack — enabling segmentation, flows, loyalty enrollment, UGC reviews, referrals. :contentReference[oaicite:10]{index=10}",
-      "Engagement & Revenue Analytics": "Track influencer performance: engagement metrics, social reach, UGC conversions, sales from referrals/discounts — to measure ROI of influencer campaigns. :contentReference[oaicite:11]{index=11}",
-      "Flexible Setup (Popups, Forms, Checkout, Custom Forms)": "Supports multiple ways to collect social handles — via popups, checkout fields (Shopify Plus), custom forms, etc. :contentReference[oaicite:12]{index=12}"
-    },
-    "pricing_plans": {
-      "from_shopify_app_store": [
+      "integrations": [
         {
-          "plan": "Starter",
-          "price_usd_per_month": 229,
-          "target_brands": "brands with <50k followers",
-          "free_trial_days": 7
+          "name": "Klaviyo",
+          "url": "https://www.klaviyo.com/login",
+          "status": "integrated",
+          "role": "Email/SMS marketing & list growth from social"
         },
         {
-          "plan": "Standard",
-          "price_usd_per_month": 579,
-          "target_brands": "brands with 50k+ followers",
-          "free_trial_days": 7,
-          "includes_10000_email_sms_subscribers": true,
-          "additional_subscriber_pricing": "USD 16 / 500 additional subscribers"
+          "name": "Gorgias",
+          "url": "https://gatsbydev.gorgias.com/login",
+          "status": "integrated",
+          "role": "Customer support / helpdesk — connects social & UGC data with support workflow"
+        },
+        {
+          "name": "Attentive",
+          "url": "https://ui.attentivemobile.com/signin",
+          "status": "integrated",
+          "role": "SMS marketing / automation"
+        },
+        {
+          "name": "LoyaltyLion",
+          "url": "https://app.loyaltylion.com/login",
+          "status": "integrated",
+          "role": "Loyalty & rewards / ambassador/referral program support"
+        },
+        {
+          "name": "Yotpo",
+          "url": "https://login.yotpo.com/#/login?product=sms",
+          "status": "integrated",
+          "role": "Reviews / UGC / loyalty / referral"
+        },
+        {
+          "name": "YotpoSmsBump",
+          "url": "https://login.yotpo.com/#/login?product=settings",
+          "status": "integrated",
+          "role": "SMS & marketing automation (via Yotpo stack)"
+        },
+        {
+          "name": "Stamped",
+          "url": "https://stamped.io/account/signin",
+          "status": "integrated",
+          "role": "Reviews / UGC / loyalty / social proof & reputation"
+        },
+        {
+          "name": "Talkable",
+          "url": "https://www.talkable.com/login",
+          "status": "integrated",
+          "role": "Referral / sharing / ambassador campaigns"
+        },
+        {
+          "name": "HubSpot",
+          "url": "https://app.hubspot.com/login",
+          "status": "integrated",
+          "role": "CRM, omnichannel marketing automation"
+        },
+        {
+          "name": "Omnisend",
+          "url": "https://app.omnisend.com/login",
+          "status": "integrated",
+          "role": "Email/SMS marketing automation"
+        },
+        {
+          "name": "Sailthru",
+          "url": "https://login.sailthru.com/u/login/identifier?state=...",
+          "status": "integrated",
+          "role": "Email marketing / customer segmentation / personalization"
+        },
+        {
+          "name": "Zapier",
+          "url": null,
+          "status": "pending_client_access",
+          "role": "Workflow automation / custom integrations / webhook orchestration"
+        },
+        {
+          "name": "Webhooks",
+          "url": "integration page",
+          "status": "configured",
+          "role": "Custom triggers, event-based automation for non-standard workflows"
+        },
+        {
+          "name": "WhiteLabelLoyalty",
+          "url": "https://auth.wlloyalty.net/u/login?state=...",
+          "status": "integrated",
+          "role": "White-label loyalty/rewards program integration"
+        },
+        {
+          "name": "Sendlane",
+          "url": "https://auth.sendlane.com/login",
+          "status": "integrated",
+          "role": "Email/SMS marketing automation / lifecycle messaging"
         }
-      ]
-    },
-    "project_scope": {
-      "full_saas_platform": true,
-      "public_shopify_app": true,
-      "multi-integration_support": true,
-      "automation_flows": true,
-      "analytics_dashboard": true,
-      "UGC_and_social_media_analytics": true,
-      "influencer_management": true,
-      "loyalty_and_reward_systems": true
-    },
-    "observed_use_cases_and_workflows": [
-      "Social follower → DM / popup subscribe → email/SMS list growth",
-      "Identify customers with high social reach → automatic influencer scoring → send invite via email/SMS/referral coupon → track UGC + purchases → reward influencer/referrer",
-      "Ambassador/referral program via loyalty/rewards integration (LoyaltyLion, WhiteLabelLoyalty, etc.)",
-      "Collect product reviews & UGC via Yotpo/Stamped + integrate with CRM and marketing automation",
-      "CRM and customer support integration (e.g. HubSpot, Gorgias) to combine social data with support history and loyalty status",
-      "Automation via Zapier / Webhooks for custom flows where pre-built integrations are insufficient"
-    ],
-    "source": {
-      "portfolio_page_url": "https://www.brihaspatitech.com/portfolio/saas-solution-elevates-gatsbys-influencer-game/",
-      "gatsby_official_url": "https://gatsby.ai/",
-      "shopify_app_url": "https://apps.shopify.com/gatsby",
-      "about_gatsby_url": "https://gatsby.ai/",
-      "platform_features_url": "https://gatsby.ai/",
-      "public_blog_posts": [
-        "https://gatsby.ai/blog/post/successful-influencer-marketing-strategy-for-shopify",
-        "https://gatsby.ai/blog/gatsby-2.0-is-here",
-        "https://gatsby.ai/blog/post/gatsby-launches-new-shopify-pos-loyalty-rewards-extension"
-      ]
+      ],
+      "key_features": {
+        "social_signup_capture": "Allow Instagram/TikTok followers to subscribe via DMs or popups — converting social audience into owned email & SMS lists. :contentReference[oaicite:6]{index=6}",
+        "UGC_media_tracking": "Track UGC: posts, stories, reels, mentions, tags, DMs, comments; aggregate media assets + engagement metrics; allow downloadable content. :contentReference[oaicite:7]{index=7}",
+        "Influencer_scoring_and_segmentation": "Based on follower count, engagement, bio keywords — produce a ‘G Score’ to identify ideal micro-influencers / ambassadors. :contentReference[oaicite:8]{index=8}",
+        "Automated Ambassador & Influencer Campaigns": "Trigger flows based on social events (e.g. story mentions, tags, DMs) — auto-reply, send discount / referral / loyalty codes, enroll in ambassador programs. :contentReference[oaicite:9]{index=9}",
+        "Integration with Email/SMS, Loyalty, CRM, Reviews & Automation Tools": "Connect social/customer data to marketing stack — enabling segmentation, flows, loyalty enrollment, UGC reviews, referrals. :contentReference[oaicite:10]{index=10}",
+        "Engagement & Revenue Analytics": "Track influencer performance: engagement metrics, social reach, UGC conversions, sales from referrals/discounts — to measure ROI of influencer campaigns. :contentReference[oaicite:11]{index=11}",
+        "Flexible Setup (Popups, Forms, Checkout, Custom Forms)": "Supports multiple ways to collect social handles — via popups, checkout fields (Shopify Plus), custom forms, etc. :contentReference[oaicite:12]{index=12}"
+      },
+      "pricing_plans": {
+        "from_shopify_app_store": [
+          {
+            "plan": "Starter",
+            "price_usd_per_month": 229,
+            "target_brands": "brands with <50k followers",
+            "free_trial_days": 7
+          },
+          {
+            "plan": "Standard",
+            "price_usd_per_month": 579,
+            "target_brands": "brands with 50k+ followers",
+            "free_trial_days": 7,
+            "includes_10000_email_sms_subscribers": true,
+            "additional_subscriber_pricing": "USD 16 / 500 additional subscribers"
+          }
+        ]
+      },
+      "project_scope": {
+        "full_saas_platform": true,
+        "public_shopify_app": true,
+        "multi-integration_support": true,
+        "automation_flows": true,
+        "analytics_dashboard": true,
+        "UGC_and_social_media_analytics": true,
+        "influencer_management": true,
+        "loyalty_and_reward_systems": true
+      },
+      "observed_use_cases_and_workflows": [
+        "Social follower → DM / popup subscribe → email/SMS list growth",
+        "Identify customers with high social reach → automatic influencer scoring → send invite via email/SMS/referral coupon → track UGC + purchases → reward influencer/referrer",
+        "Ambassador/referral program via loyalty/rewards integration (LoyaltyLion, WhiteLabelLoyalty, etc.)",
+        "Collect product reviews & UGC via Yotpo/Stamped + integrate with CRM and marketing automation",
+        "CRM and customer support integration (e.g. HubSpot, Gorgias) to combine social data with support history and loyalty status",
+        "Automation via Zapier / Webhooks for custom flows where pre-built integrations are insufficient"
+      ],
+      "source": {
+        "portfolio_page_url": "https://www.brihaspatitech.com/portfolio/saas-solution-elevates-gatsbys-influencer-game/",
+        "gatsby_official_url": "https://gatsby.ai/",
+        "shopify_app_url": "https://apps.shopify.com/gatsby",
+        "about_gatsby_url": "https://gatsby.ai/",
+        "platform_features_url": "https://gatsby.ai/",
+        "public_blog_posts": [
+          "https://gatsby.ai/blog/post/successful-influencer-marketing-strategy-for-shopify",
+          "https://gatsby.ai/blog/gatsby-2.0-is-here",
+          "https://gatsby.ai/blog/post/gatsby-launches-new-shopify-pos-loyalty-rewards-extension"
+        ]
+      }
+    }
+  },
+  {
+    "project": {
+      "title": "SaaS Platform for Corporate Phishing Training & Simulation",
+      "client": "Enterprise & Corporate Organizations",
+      "platform_url": null,
+      "industry": "Cybersecurity / Corporate IT Security / Employee Awareness Training",
+      "categories": [
+        "Cybersecurity",
+        "Phishing Simulation",
+        "Corporate Training",
+        "Software / SaaS",
+        "Enterprise Security"
+      ],
+      "overview": "Developed a scalable SaaS-based phishing awareness and simulation platform designed to help organizations train employees against phishing attacks. The system allows security teams to create, launch, and monitor phishing campaigns, assess employee behavior, and improve organizational security posture through continuous awareness training and reporting.",
+      "core_value_proposition": {
+        "phishing_attack_simulation": "Simulate real-world phishing attacks using customizable templates to test employee awareness and response behavior.",
+        "employee_security_training": "Educate employees through targeted phishing simulations and awareness programs to reduce human error in cybersecurity incidents.",
+        "risk_assessment_and_reporting": "Identify vulnerable users and departments using detailed reports, analytics, and risk scoring.",
+        "enterprise_ready_architecture": "Designed for large organizations with role-based access, scalable infrastructure, and centralized campaign management."
+      },
+      "tech_stack": {
+        "frontend_backend": "React JS / Node JS",
+        "database": "MongoDB",
+        "security_features": [
+          "Role-based access control",
+          "Secure authentication",
+          "Audit logs",
+          "Data encryption"
+        ]
+      },
+      "key_features": {
+        "custom_phishing_campaigns": "Create and launch phishing campaigns with configurable templates, targets, and schedules.",
+        "email_template_management": "Predefined and customizable phishing email templates that mimic real attack patterns.",
+        "user_and_group_management": "Manage users, departments, and roles for targeted simulations.",
+        "real_time_tracking": "Track email opens, link clicks, credential submissions, and reporting behavior.",
+        "analytics_dashboard": "Visual dashboards displaying campaign results, user performance, and security risk levels.",
+        "automated_reports": "Generate detailed reports for management and security teams to evaluate training effectiveness."
+      },
+      "project_scope": {
+        "full_saas_platform": true,
+        "multi_tenant_architecture": true,
+        "enterprise_security_compliance": true,
+        "training_and_simulation": true,
+        "analytics_and_reporting": true
+      },
+      "observed_use_cases_and_workflows": [
+        "Launch simulated phishing campaigns across departments",
+        "Monitor employee interaction with phishing emails",
+        "Identify high-risk users based on interaction patterns",
+        "Improve cybersecurity awareness through continuous testing",
+        "Provide management-level security insights through reports"
+      ],
+      "target_users": [
+        "Corporate IT Security Teams",
+        "CISOs",
+        "Enterprise Administrators",
+        "HR & Compliance Teams"
+      ],
+      "source": {
+        "portfolio_page_url": "https://www.brihaspatitech.com/portfolio/saas-platform-for-corporate-phishing-training-simulation/"
+      }
     }
   }
-}
+]
