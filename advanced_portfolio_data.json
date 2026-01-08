@@ -218,6 +218,7 @@
         "security_features": [
           "Role-based access control",
           "Secure authentication",
+          "MFA Login",
           "Audit logs",
           "Data encryption"
         ]

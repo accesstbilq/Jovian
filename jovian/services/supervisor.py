@@ -93,6 +93,8 @@ def create_supervisor_agent(llm, message_agent, checkpointer):
         """✅ FIXED: Extract ONLY latest user message"""
         # Get ONLY the last user message
         input_messages = state.get("messages", [])
+
+        print("INPUT MESSAGES ####", input_messages)
         if input_messages:
             last_msg = input_messages[-1]
             user_message = last_msg.content if hasattr(last_msg, 'content') else str(last_msg)
